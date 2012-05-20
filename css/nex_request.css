@@ -1,0 +1,70 @@
+#nex_request{
+    font-family:Arial,Helvetica,Georgia,Sans-serif;
+    width:860px;
+    height:471px;
+    padding:20px;
+}
+#nex_request .left{
+    float:left;
+    width:456px;
+    height:471px;
+}
+
+#nex_request .left-bottom{
+    background:url('../img/nex-form-bot-left.png');
+    float:left;
+    clear:left;
+    height:172px;
+}
+
+#nex_request .right{
+    float:left;
+    background:url('../img/nex-right-box.png');
+    height: 471px;
+    width:384px;
+}
+
+#nex_request_form .submit{
+    background: url("../img/request-but-up.png") repeat scroll 0 0 transparent;
+    border: medium none;
+    height: 59px;
+    margin-left: 58px;
+    position: absolute;
+    top: 335px;
+    width: 258px;
+}
+#nex_request_form .down{
+    background:url('../img/request-but-down.png');
+}
+#nex_request .hidden{
+    display:none;
+}
+#nex_request label{
+    color:white;  
+}
+#nex_request table{
+    border-collapse:collapse;
+    font-size:16px;
+    margin: 20px 0 0 20px;
+}
+#nex_request_form select, #nex_request_form .nexersys{
+    width:200px;
+}
+#nex_request_form .label{
+    padding-right:10px;
+}
+#nex_request_form td.label {
+    vertical-align:top;
+    text-align:right;
+    line-height:28px;
+}
+#nex_request_form tr{
+    xline-height:28px;
+    margin-bottom:10px;
+}
+#nex_request_form textarea{
+    height:80px;
+}
+#Questions{
+    resize:none;
+}
