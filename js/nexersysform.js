@@ -11,9 +11,9 @@ $(document).ready(function() {
 
     nexReqForm = {
         /*
-         * Instructions:  Enter complete urls in the arrays below for home, commercial and pro models.  
-         * Any other url will be treated as 'general'.  Also enter the home and commercial destination urls for zoho CRM.  
-         * 
+         * Instructions:  Enter complete urls in the arrays below for home, commercial and pro models.
+         * Any other url will be treated as 'general'.  Also enter the home and commercial destination urls for zoho CRM.
+         *
          */
         homeUrls : ['http://form.localhost:8888/home.php', 'http://nexersysdemo.principlepointdev.com/form/home.php'],
         commercialUrls : ['http://form.localhost:8888/comm.php', 'http://nexersysdemo.principlepointdev.com/form/comm.php'],
@@ -55,17 +55,17 @@ $(document).ready(function() {
                          if(this.urlType == 'home'){
                              $('.model_type').addClass('hidden');
                              $('[name=ModelType]').val('home');
-                             $('#nex_request .left-top img').attr('src', './NexersysBrochureForm/img/nex-bro-home.png');
+                             $('#nex_request .left-top img').attr('src', './img/nex-bro-home.png');
                          }else if(this.urlType == 'commercial'){
                              $('.model_type').addClass('hidden');
                              $('[name=ModelType]').val('commercial');
-                             $('#nex_request .left-top img').attr('src', './NexersysBrochureForm/img/nex-bro-comm.png');
+                             $('#nex_request .left-top img').attr('src', './img/nex-bro-comm.png');
                          }else if(this.urlType == 'pro'){
                              $('.model_type').addClass('hidden');
                              $('[name=ModelType]').val('pro');
-                             $('#nex_request .left-top img').attr('src', './NexersysBrochureForm/img/nex-bro-pro.png');
+                             $('#nex_request .left-top img').attr('src', './img/nex-bro-pro.png');
                          }else{
-                             $('#nex_request .left-top img').attr('src', './NexersysBrochureForm/img/nex-bro-home.png');
+                             $('#nex_request .left-top img').attr('src', './img/nex-bro-home.png');
                          }
                      }
     }

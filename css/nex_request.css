@@ -9,23 +9,23 @@
     border:none;
 }
 #nex_request tr td, #nex_request tr th{
-background:none;
+    background:none;
     padding:0;
     border:none;
 }
 #nex_request input, #nex_request select{
-font-size:16px;
-padding:0;
-margin:3px;
+    font-size:16px;
+    padding:0;
+    margin:3px;
 }
 #nex_request input{
-width:200px;
+    width:200px;
 }
 #nex_request select{
-width:207px;
+    width:207px;
 }
 #nex_request tr{
-background:none;
+    background:none;
 }
 #nex_request .left{
     float:left;
@@ -33,7 +33,7 @@ background:none;
     height:471px;
 }
 #nex_request .left-top{
-height:299px;
+    height:299px;
 }
 #nex_request .left-bottom{
     background:url('../img/nex-form-bot-left.png');
@@ -65,13 +65,13 @@ height:299px;
     display:none;
 }
 #nex_request label{
-    color:white;  
+    color:white;
 }
 #nex_request table{
     border-collapse:collapse;
 border:none;
     font-size:16px !important;
-    margin: 10px 0 0;
+    margin: 10px 0px 0px 15px;
 }
 #nex_request_form .label{
     padding-right:10px;
