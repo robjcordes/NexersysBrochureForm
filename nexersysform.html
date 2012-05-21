@@ -1,21 +1,21 @@
-<script type="text/javascript" src="./BrochureForm/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="./BrochureForm/js/nexersysform.js"></script>
-<script type="text/javascript" src="./BrochureForm/js/jquery.validationEngine.js"></script>
-<script type="text/javascript" src="./BrochureForm/js/jquery.validationEngine-en.js"></script>
-<link rel="stylesheet" type="text/css" href="./BrochureForm/css/nex_request.css"/>
-<link rel="stylesheet" type="text/css" href="./BrochureForm/css/validationEngine.jquery.css"/>
+<script type="text/javascript" src="./NexersysBrochureForm/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="./NexersysBrochureForm/js/nexersysform.js"></script>
+<script type="text/javascript" src="./NexersysBrochureForm/js/jquery.validationEngine.js"></script>
+<script type="text/javascript" src="./NexersysBrochureForm/js/jquery.validationEngine-en.js"></script>
+<link rel="stylesheet" type="text/css" href="./NexersysBrochureForm/css/nex_request.css"/>
+<link rel="stylesheet" type="text/css" href="./NexersysBrochureForm/css/validationEngine.jquery.css"/>
 <div id="nex_request">
     <div class="left">
         <div class="left-top">
-            <div><img src="./BrochureForm/img/nex-bro-home.png"/></div>
+            <div><img src="./NexersysBrochureForm/img/nex-bro-home.png"/></div>
         </div>
         <div class="left-bottom">
-            <div><img src="./BrochureForm/img/nex-form-bot-left.png"/></div>
+            <div><img src="./NexersysBrochureForm/img/nex-form-bot-left.png"/></div>
         </div>
     </div>
     <div class="right">
         <form method="POST" action="http://nothing.com" id="nex_request_form" name="nex_request">
-            <table>
+            <table id="nexersys-form-fields">
                 <tr>
                     <td class="label"><label for="FirstName">First Name*</label></td>
                     <td><input type="text" id="FirstName" name="FirstName" class="nexersys validate[required]"></td>

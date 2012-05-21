@@ -3,13 +3,38 @@
     width:860px;
     height:471px;
     padding:20px;
+    position:relative;
+}
+#nex_request tbody{
+    border:none;
+}
+#nex_request tr td, #nex_request tr th{
+background:none;
+    padding:0;
+    border:none;
+}
+#nex_request input, #nex_request select{
+font-size:16px;
+padding:0;
+margin:3px;
+}
+#nex_request input{
+width:200px;
+}
+#nex_request select{
+width:207px;
+}
+#nex_request tr{
+background:none;
 }
 #nex_request .left{
     float:left;
     width:456px;
     height:471px;
 }
-
+#nex_request .left-top{
+height:299px;
+}
 #nex_request .left-bottom{
     background:url('../img/nex-form-bot-left.png');
     float:left;
@@ -44,11 +69,9 @@
 }
 #nex_request table{
     border-collapse:collapse;
-    font-size:16px;
-    margin: 20px 0 0 20px;
-}
-#nex_request_form select, #nex_request_form .nexersys{
-    width:200px;
+border:none;
+    font-size:16px !important;
+    margin: 10px 0 0;
 }
 #nex_request_form .label{
     padding-right:10px;
@@ -59,11 +82,11 @@
     line-height:28px;
 }
 #nex_request_form tr{
-    xline-height:28px;
     margin-bottom:10px;
 }
 #nex_request_form textarea{
-    height:80px;
+    height:70px;
+width:207px;
 }
 #Questions{
     resize:none;
