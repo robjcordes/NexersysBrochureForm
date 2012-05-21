@@ -18,9 +18,13 @@ $(document).ready(function() {
         homeUrls : ['http://form.localhost:8888/home.php', 'http://nexersysdemo.principlepointdev.com/form/home.php', 'http://nexersysdemo.principlepointdev.com/NexersysBrochureForm/home.php'],
         commercialUrls : ['http://form.localhost:8888/comm.php', 'http://nexersysdemo.principlepointdev.com/form/comm.php', 'http://nexersysdemo.principlepointdev.com/NexersysBrochureForm/comm.php'],
         proUrls : ['http://form.localhost:8888/pro.php', 'http://nexersysdemo.principlepointdev.com/form/pro.php', 'http://nexersysdemo.principlepointdev.com/NexersysBrochureForm/pro.php'],
-        zohoHomeUrl : 'http://home.com',
+        zohoHomeUrl : 'https://crm.zoho.com/crm/WebToLeadForm',
         zohoCommUrl : 'http://commercial.com',
-        checkUrlType : function(){
+        hiddenCommInput : "<input type='hidden' name='xnQsjsdp' value='dhOYVrEbdmJthYo*kRl79w$$'><input type='hidden' name='xmIwtLD' value='xxtEl*Hx2ByNU*uyPq3OMHBogz4VdScW'><input type='hidden' name='actionType' value='TGVhZHM='><input type='hidden' name='returnURL' value='http://www.nexersys.com'>",
+        hiddenHomeInput : "<input type='hidden' name='xnQsjsdp' value='f1LzxolSe-0$'><input type='hidden' name='xmIwtLD' value='82AfV3HJwjp71g4ILMIYL*GCpUdN*P5O'><input type='hidden' name='actionType' value='TGVhZHM='><input type='hidden' name='returnURL' value='http://www.nexersys.com'>",
+        formNameHome: "WebToLeads452985000001485047",
+        formNameComm: "WebToLeads582065000000070015",
+      checkUrlType : function(){
                 var url = $(location).attr('href');
                 if($.inArray(url, this.homeUrls) != -1){
                     this.urlType = 'home';
@@ -33,7 +37,7 @@ $(document).ready(function() {
                 }
         },
         updateAction : function(country, urlType){
-                           var modelType = $('[name=ModelType]').val();
+                           var modelType = $('[name=LEADCF3]').val();
                            if(this.urlType == 'general'){
                                if((modelType == 'home' || modelType == 'pro') && country == 'United States'){
                                    this.action = this.zohoHomeUrl;
@@ -49,6 +53,8 @@ $(document).ready(function() {
                            }else if(this.urlType == 'commercial'){
                                this.action = this.zohoCommUrl;
                            }
+                           //todo: update hidden inputs, remove action updating
+                           //todo: update form name
                            $('#nex_request_form').attr('action', this.action);
                        },
         formatForm : function(){
