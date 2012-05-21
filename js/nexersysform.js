@@ -15,9 +15,9 @@ $(document).ready(function() {
          * Any other url will be treated as 'general'.  Also enter the home and commercial destination urls for zoho CRM.
          *
          */
-        homeUrls : ['http://form.localhost:8888/home.php', 'http://nexersysdemo.principlepointdev.com/form/home.php'],
-        commercialUrls : ['http://form.localhost:8888/comm.php', 'http://nexersysdemo.principlepointdev.com/form/comm.php'],
-        proUrls : ['http://form.localhost:8888/pro.php', 'http://nexersysdemo.principlepointdev.com/form/pro.php'],
+        homeUrls : ['http://form.localhost:8888/home.php', 'http://nexersysdemo.principlepointdev.com/form/home.php', 'http://nexersysdemo.principlepointdev.com/NexersysBrochureForm/home.php'],
+        commercialUrls : ['http://form.localhost:8888/comm.php', 'http://nexersysdemo.principlepointdev.com/form/comm.php', 'http://nexersysdemo.principlepointdev.com/NexersysBrochureForm/comm.php'],
+        proUrls : ['http://form.localhost:8888/pro.php', 'http://nexersysdemo.principlepointdev.com/form/pro.php', 'http://nexersysdemo.principlepointdev.com/NexersysBrochureForm/pro.php'],
         zohoHomeUrl : 'http://home.com',
         zohoCommUrl : 'http://commercial.com',
         checkUrlType : function(){
