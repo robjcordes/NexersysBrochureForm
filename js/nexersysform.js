@@ -4,27 +4,42 @@ $(document).ready(function() {
     $('#nex_request_form .submit').hover(function(){
         $(this).toggleClass('down');
     });
-    $('#nex_request_form .submit').click(function(){
+    $('#nex_request_form .submit').click(function(event){
         var country = $('[name=Country]').val();
         nexReqForm.updateAction(country, nexReqForm.urlType);
+        nexReqForm.showTestAlerts();
     });
 
     nexReqForm = {
         /*
          * Instructions:  Enter complete urls in the arrays below for home, commercial and pro models.
-         * Any other url will be treated as 'general'.  Also enter the home and commercial destination urls for zoho CRM.
+         * Any other url will be treated as 'general'.
          *
          */
-        homeUrls : ['http://form.localhost:8888/home.php', 'http://nexersysdemo.principlepointdev.com/form/home.php', 'http://nexersysdemo.principlepointdev.com/NexersysBrochureForm/home.php'],
-        commercialUrls : ['http://form.localhost:8888/comm.php', 'http://nexersysdemo.principlepointdev.com/form/comm.php', 'http://nexersysdemo.principlepointdev.com/NexersysBrochureForm/comm.php'],
-        proUrls : ['http://form.localhost:8888/pro.php', 'http://nexersysdemo.principlepointdev.com/form/pro.php', 'http://nexersysdemo.principlepointdev.com/NexersysBrochureForm/pro.php'],
-        zohoHomeUrl : 'https://crm.zoho.com/crm/WebToLeadForm',
-        zohoCommUrl : 'http://commercial.com',
+        homeUrls : [
+            'http://form.localhost:8888/home.php', 
+            'http://nexersysdemo.principlepointdev.com/form/home.php', 
+            'http://nexersysdemo.principlepointdev.com/NexersysBrochureForm/home.php'
+        ],
+        commercialUrls : [
+            'http://form.localhost:8888/comm.php', 
+            'http://nexersysdemo.principlepointdev.com/form/comm.php', 
+            'http://nexersysdemo.principlepointdev.com/NexersysBrochureForm/comm.php'],
+        proUrls : [
+            'http://form.localhost:8888/pro.php', 
+            'http://nexersysdemo.principlepointdev.com/form/pro.php', 
+            'http://nexersysdemo.principlepointdev.com/NexersysBrochureForm/pro.php'],
         hiddenCommInput : "<input type='hidden' name='xnQsjsdp' value='dhOYVrEbdmJthYo*kRl79w$$'><input type='hidden' name='xmIwtLD' value='xxtEl*Hx2ByNU*uyPq3OMHBogz4VdScW'><input type='hidden' name='actionType' value='TGVhZHM='><input type='hidden' name='returnURL' value='http://www.nexersys.com'>",
         hiddenHomeInput : "<input type='hidden' name='xnQsjsdp' value='f1LzxolSe-0$'><input type='hidden' name='xmIwtLD' value='82AfV3HJwjp71g4ILMIYL*GCpUdN*P5O'><input type='hidden' name='actionType' value='TGVhZHM='><input type='hidden' name='returnURL' value='http://www.nexersys.com'>",
         formNameHome: "WebToLeads452985000001485047",
         formNameComm: "WebToLeads582065000000070015",
-      checkUrlType : function(){
+        showTestAlerts : function(){
+            alert('form name: ' + $('#nex_request_form').attr('name') 
+                    + '\n URL Type: ' + nexReqForm.urlType
+                    + '\n Model Type: ' + nexReqForm.modelType
+            );
+        },
+        checkUrlType : function(){
                 var url = $(location).attr('href');
                 if($.inArray(url, this.homeUrls) != -1){
                     this.urlType = 'home';
@@ -37,38 +52,46 @@ $(document).ready(function() {
                 }
         },
         updateAction : function(country, urlType){
-                           var modelType = $('[name=LEADCF3]').val();
+                           this.modelType = $('[name=LEADCF3]').val();
                            if(this.urlType == 'general'){
-                               if((modelType == 'home' || modelType == 'pro') && country == 'United States'){
-                                   this.action = this.zohoHomeUrl;
+                               if((this.modelType == 'home' || this.modelType == 'pro') && country == 'United States'){
+                                   //zohoHome
+                                   $('#nex_request form').attr('name', this.formNameHome);
+                                   $('#nex_request table').prepend(this.hiddenHomeInput);
                                }else{
-                                   this.action = this.zohoCommUrl;
+                                   //zohoCommercial
+                                   $('#nex_request form').attr('name', this.formNameComm);
+                                   $('#nex_request table').prepend(this.hiddenCommInput);
                                }
                            }else if(this.urlType == 'home' || this.urlType == 'pro'){
                                if(country == 'United States'){
-                                   this.action = this.zohoHomeUrl;
+                                   //zohoHome
+                                   $('#nex_request form').attr('name', this.formNameHome);
+                                   $('#nex_request table').prepend(this.hiddenHomeInput);
                                }else{
-                                   this.action = this.zohoCommUrl;
+                                   //zohoCommercial
+                                   $('#nex_request form').attr('name', this.formNameComm);
+                                   $('#nex_request table').prepend(this.hiddenCommInput);
                                }
                            }else if(this.urlType == 'commercial'){
-                               this.action = this.zohoCommUrl;
+                               //zohoCommercial
+                               $('#nex_request form').attr('name', this.formNameComm);
+                               $('#nex_request table').prepend(this.hiddenCommInput);
                            }
-                           //todo: update hidden inputs, remove action updating
-                           //todo: update form name
-                           $('#nex_request_form').attr('action', this.action);
+                           //todo: update hidden inputs                                
                        },
         formatForm : function(){
                          if(this.urlType == 'home'){
                              $('.model_type').addClass('hidden');
-                             $('[name=ModelType]').val('home');
+                             $('[name=LEADCF3]').val('home');
                              $('#nex_request .left-top img').attr('src', './img/nex-bro-home.png');
                          }else if(this.urlType == 'commercial'){
                              $('.model_type').addClass('hidden');
-                             $('[name=ModelType]').val('commercial');
+                             $('[name=LEADCF3]').val('commercial');
                              $('#nex_request .left-top img').attr('src', './img/nex-bro-comm.png');
                          }else if(this.urlType == 'pro'){
                              $('.model_type').addClass('hidden');
-                             $('[name=ModelType]').val('pro');
+                             $('[name=LEADCF3]').val('pro');
                              $('#nex_request .left-top img').attr('src', './img/nex-bro-pro.png');
                          }else{
                              $('#nex_request .left-top img').attr('src', './img/nex-bro-home.png');
