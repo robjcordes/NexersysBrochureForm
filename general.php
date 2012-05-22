@@ -1,3 +1,1 @@
-<?php
-include('nexersysform.html');
-?>
+<?php include('nexersysform.html') ?>
