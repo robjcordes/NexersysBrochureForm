@@ -8,6 +8,7 @@ $(document).ready(function() {
         var country = $('[name=Country]').val();
         nexReqForm.updateAction(country, nexReqForm.urlType);
         nexReqForm.showTestAlerts();
+        return false;
     });
 
     nexReqForm = {
@@ -34,10 +35,15 @@ $(document).ready(function() {
         formNameHome: "WebToLeads452985000001485047",
         formNameComm: "WebToLeads582065000000070015",
         showTestAlerts : function(){
-            alert('form name: ' + $('#nex_request_form').attr('name') 
+            var formValues = 'form name: ' + $('#nex_request_form').attr('name') 
                     + '\n URL Type: ' + nexReqForm.urlType
                     + '\n Model Type: ' + nexReqForm.modelType
-            );
+                    + '\n Country: ' + $('#nex_request form [name=Country]').val()
+                    + '\n Questions: ' + $('#nex_request form [name=Questions]').val();
+            $('#nex_request form input').each(function(){
+                formValues += '\n ' + $(this).val();
+            });
+            alert(formValues);
         },
         checkUrlType : function(){
                 var url = $(location).attr('href');
@@ -52,21 +58,21 @@ $(document).ready(function() {
                 }
         },
         updateAction : function(country, urlType){
-                           this.modelType = $('[name=LEADCF3]').val();
-                           if(this.urlType == 'general'){
-                               if((this.modelType == 'home' || this.modelType == 'pro') && country == 'United States'){
-                                   //zohoHome
-                                   $('#nex_request form').attr('name', this.formNameHome);
-                                   $('#nex_request table').prepend(this.hiddenHomeInput);
-                               }else{
-                                   //zohoCommercial
-                                   $('#nex_request form').attr('name', this.formNameComm);
-                                   $('#nex_request table').prepend(this.hiddenCommInput);
-                               }
-                           }else if(this.urlType == 'home' || this.urlType == 'pro'){
-                               if(country == 'United States'){
-                                   //zohoHome
-                                   $('#nex_request form').attr('name', this.formNameHome);
+            this.modelType = $('[name=LEADCF3]').val();
+            if(this.urlType == 'general'){
+                if((this.modelType == 'home' || this.modelType == 'pro') && country == 'United States'){
+                    //zohoHome
+                    $('#nex_request form').attr('name', this.formNameHome);
+                    $('#nex_request table').prepend(this.hiddenHomeInput);
+                }else{
+                    //zohoCommercial
+                    $('#nex_request form').attr('name', this.formNameComm);
+                    $('#nex_request table').prepend(this.hiddenCommInput);
+                }
+            }else if(this.urlType == 'home' || this.urlType == 'pro'){
+                if(country == 'United States'){
+                    //zohoHome
+                    $('#nex_request form').attr('name', this.formNameHome);
                                    $('#nex_request table').prepend(this.hiddenHomeInput);
                                }else{
                                    //zohoCommercial
