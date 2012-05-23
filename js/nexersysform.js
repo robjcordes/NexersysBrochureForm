@@ -32,8 +32,8 @@ $(document).ready(function() {
         'http://nexersysdemo.principlepointdev.com/NexersysBrochureForm/pro.php'],
     hiddenCommInput : "<input type='hidden' name='xnQsjsdp' value='dhOYVrEbdmJthYo*kRl79w$$'><input type='hidden' name='xmIwtLD' value='xxtEl*Hx2ByNU*uyPq3OMHBogz4VdScW'><input type='hidden' name='actionType' value='TGVhZHM='><input type='hidden' name='returnURL' value='http://www.nexersys.com'>",
     hiddenHomeInput : "<input type='hidden' name='xnQsjsdp' value='f1LzxolSe-0$'><input type='hidden' name='xmIwtLD' value='82AfV3HJwjp71g4ILMIYL*GCpUdN*P5O'><input type='hidden' name='actionType' value='TGVhZHM='><input type='hidden' name='returnURL' value='http://www.nexersys.com'>",
-    formNameHome: "WebToLeads452985000001485047",
-    formNameComm: "WebToLeads582065000000070015",
+    formNameHome : "WebToLeads452985000001485047",
+    formNameComm : "WebToLeads582065000000070015",
     showTestAlerts : function(){
         var formValues = 'form name: ' + $('#nex_request_form').attr('name')
             + '\n URL Type: ' + nexReqForm.urlType
@@ -64,12 +64,14 @@ $(document).ready(function() {
     prepareForm : function(crmType){
         //change form names, change insert hidden input fields etc. here before submitting form
         if(crmType == 'zohoHome'){
+            alert('going to home! ' + this.formNameHome);
             $('#nex_request form').attr('name', this.formNameHome);
             $('#nex_request table').prepend(this.hiddenHomeInput);
             $('#nex_request #model_type').attr('name', 'LEADCF15');
             $('#nex_request #nex_request_country').attr('name', 'LEADCF23');
             $('#nex_request #questions').attr('name', 'LEADCF28');
         }else{
+            alert('going to commercial!');
             //if not home, format input fields for commercial crm
             $('#nex_request form').attr('name', this.formNameComm);
             $('#nex_request table').prepend(this.hiddenCommInput);
