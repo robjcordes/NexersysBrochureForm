@@ -7,8 +7,8 @@ $(document).ready(function() {
     $('#nex_request_form .submit').click(function(event){
         var country = $('[name=Country]').val();
         nexReqForm.updateAction(country, nexReqForm.urlType);
-       // nexReqForm.showTestAlerts();
-       // return false;
+        nexReqForm.showTestAlerts();
+       return false;
     });
 
     nexReqForm = {
@@ -84,20 +84,49 @@ $(document).ready(function() {
                            $('#nex_request form').attr('name', this.formNameComm);
                            $('#nex_request table').prepend(this.hiddenCommInput);
                        }
-                       //todo: update hidden inputs
+                            var currentTime = new Date();
+                            var month = currentTime.getMonth() + 1;
+                            var day = currentTime.getDate();
+                            var year = currentTime.getFullYear();
+                            var hours = currentTime.getHours();
+                            
+                            var minutes = currentTime.getMinutes();
+                            if (minutes < 10){
+                                minutes = '0' + minutes;
+                            }
+                            if(month < 10){
+                                month = '0' + month;
+                            }
+                            if(hours < 10){
+                                hours = '0' + hours;
+                            }
+                            if(hours > 12){
+                                hours = hours - 12;
+                                var ampm = 'PM';
+                            }else{
+                                hours = 'AM';
+                            }
+                            //console.log(' hours: ' + hours + ' minutes ');
+                            var dateString = month + '/' + day + '/' + year;
+                            console.log('hours: ' + hours);
+                            $('[name=LEADCF92]').val(dateString);
+                            $('[name=LEADCF92hour]').val(hours);
+                            $('[name=LEADCF92minute]').val(minutes);
+                            $('[name=LEADCF92ampm]').val(ampm);
+                            
                    },
     formatForm : function(){
                      if(this.urlType == 'home'){
                          $('.model_type').addClass('hidden');
-                         $('[name=LEADCF3]').val('home');
+                         $('[name=LEADCF3]').addClass('hidden').val('home');
                          $('#nex_request .left-top img').attr('src', './img/nex-bro-home.png');
                      }else if(this.urlType == 'commercial'){
                          $('.model_type').addClass('hidden');
-                         $('[name=LEADCF3]').val('commercial');
+                         $('[name=LEADCF3]').addClass('hidden').val('commercial');
                          $('#nex_request .left-top img').attr('src', './img/nex-bro-comm.png');
                      }else if(this.urlType == 'pro'){
                          $('.model_type').addClass('hidden');
-                         $('[name=LEADCF3]').val('pro');
+                         $('[name=LEADCF3]').addClass('hidden').val('pro');
                          $('#nex_request .left-top img').attr('src', './img/nex-bro-pro.png');
                      }else{
                          $('#nex_request .left-top img').attr('src', './img/nex-bro-home.png');
