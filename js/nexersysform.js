@@ -7,8 +7,8 @@ $(document).ready(function() {
     $('#nex_request_form .submit').click(function(event){
         var country = $('#nex_request form #nex_request_country').val();
         nexReqForm.updateAction(country, nexReqForm.urlType);
-        nexReqForm.showTestAlerts();
-       return false;
+      //  nexReqForm.showTestAlerts();
+      // return false;
     });
 
     nexReqForm = {
