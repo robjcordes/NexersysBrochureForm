@@ -64,14 +64,12 @@ $(document).ready(function() {
     prepareForm : function(crmType){
         //change form names, change insert hidden input fields etc. here before submitting form
         if(crmType == 'zohoHome'){
-            alert('going to home! ' + this.formNameHome);
             $('#nex_request form').attr('name', this.formNameHome);
             $('#nex_request table').prepend(this.hiddenHomeInput);
             $('#nex_request #model_type').attr('name', 'LEADCF15');
             $('#nex_request #nex_request_country').attr('name', 'LEADCF23');
             $('#nex_request #questions').attr('name', 'LEADCF28');
         }else{
-            alert('going to commercial!');
             //if not home, format input fields for commercial crm
             $('#nex_request form').attr('name', this.formNameComm);
             $('#nex_request table').prepend(this.hiddenCommInput);
@@ -132,7 +130,6 @@ $(document).ready(function() {
                             $('.hours').val(hours);
                             $('.minutes').val(minutes);
                             $('.ampm').val(ampm);
-                            
                    },
     formatForm : function(){
                      if(this.urlType == 'home'){
