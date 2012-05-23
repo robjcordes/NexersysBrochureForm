@@ -5,7 +5,7 @@ $(document).ready(function() {
         $(this).toggleClass('down');
     });
     $('#nex_request_form .submit').click(function(event){
-        var country = $('[name=Country]').val();
+        var country = $('#nex_request form #nex_request_country').val();
         nexReqForm.updateAction(country, nexReqForm.urlType);
         nexReqForm.showTestAlerts();
        return false;
@@ -38,8 +38,12 @@ $(document).ready(function() {
         var formValues = 'form name: ' + $('#nex_request_form').attr('name')
             + '\n URL Type: ' + nexReqForm.urlType
             + '\n Model Type: ' + nexReqForm.modelType
-            + '\n Country: ' + $('#nex_request form [name=Country]').val()
-            + '\n Questions: ' + $('#nex_request form [name=Questions]').val();
+            + '\n Country: ' + $('#nex_request form #nex_request_country').val()
+            + '\n Questions: ' + $('#nex_request form #questions').val()
+            + '\n model input name: ' + $('#nex_request form #model_type').attr('name')
+            + '\n country input name: ' + $('#nex_request form #nex_request_country').attr('name')
+            + '\n questions input name: ' + $('#nex_request form #questions').attr('name')
+        ;
         $('#nex_request form input').each(function(){
             formValues += '\n ' + $(this).val();
         });
@@ -57,32 +61,45 @@ $(document).ready(function() {
                            this.urlType = 'general';
                        }
                    },
+    prepareForm : function(crmType){
+        //change form names, change insert hidden input fields etc. here before submitting form
+        if(crmType == 'zohoHome'){
+            $('#nex_request form').attr('name', this.formNameHome);
+            $('#nex_request table').prepend(this.hiddenHomeInput);
+            $('#nex_request #model_type').attr('name', 'LEADCF15');
+            $('#nex_request #nex_request_country').attr('name', 'LEADCF23');
+            $('#nex_request #questions').attr('name', 'LEADCF28');
+        }else{
+            //if not home, format input fields for commercial crm
+            $('#nex_request form').attr('name', this.formNameComm);
+            $('#nex_request table').prepend(this.hiddenCommInput);
+            $('#nex_request #model_type').attr('name', 'LEADCF3');
+            $('#nex_request #nex_request_country').attr('name', 'LEADCF11');
+            $('#nex_request #questions').attr('name', 'LEADCF10');
+        }
+
+    },
     updateAction : function(country, urlType){
-                       this.modelType = $('[name=LEADCF3]').val();
+                       this.modelType = $('#nex_request #model_type').val();
                        if(this.urlType == 'general'){
                            if((this.modelType == 'home' || this.modelType == 'pro') && country == 'United States'){
                                //zohoHome
-                               $('#nex_request form').attr('name', this.formNameHome);
-                               $('#nex_request table').prepend(this.hiddenHomeInput);
+                               this.prepareForm('zohoHome');
                            }else{
                                //zohoCommercial
-                               $('#nex_request form').attr('name', this.formNameComm);
-                               $('#nex_request table').prepend(this.hiddenCommInput);
+                               this.prepareForm('zohoComm');
                            }
                        }else if(this.urlType == 'home' || this.urlType == 'pro'){
                            if(country == 'United States'){
                                //zohoHome
-                               $('#nex_request form').attr('name', this.formNameHome);
-                               $('#nex_request table').prepend(this.hiddenHomeInput);
+                               this.prepareForm('zohoHome');
                            }else{
                                //zohoCommercial
-                               $('#nex_request form').attr('name', this.formNameComm);
-                               $('#nex_request table').prepend(this.hiddenCommInput);
+                               this.prepareForm('zohoComm');
                            }
                        }else if(this.urlType == 'commercial'){
                            //zohoCommercial
-                           $('#nex_request form').attr('name', this.formNameComm);
-                           $('#nex_request table').prepend(this.hiddenCommInput);
+                               this.prepareForm('zohoComm');
                        }
                             var currentTime = new Date();
                             var month = currentTime.getMonth() + 1;
@@ -109,10 +126,10 @@ $(document).ready(function() {
                             //console.log(' hours: ' + hours + ' minutes ');
                             var dateString = month + '/' + day + '/' + year;
                             console.log('hours: ' + hours);
-                            $('[name=LEADCF92]').val(dateString);
-                            $('[name=LEADCF92hour]').val(hours);
-                            $('[name=LEADCF92minute]').val(minutes);
-                            $('[name=LEADCF92ampm]').val(ampm);
+                            $('.datestr').val(dateString);
+                            $('.hours').val(hours);
+                            $('.minutes').val(minutes);
+                            $('.ampm').val(ampm);
                             
                    },
     formatForm : function(){

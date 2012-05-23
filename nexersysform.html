@@ -34,7 +34,7 @@
                 </tr>
                 <tr class="model_type">
                     <td class="label model_type"><label for="model_type">Interested In*</label></td>
-                    <td><select name='LEADCF3'>
+                    <td><select id="model_type" name='LEADCF3'>
                             <option value='home'>Home</option>
                             <option value='commercial'>Commercial</option>
                             <option value='pro'>Pro</option>
@@ -290,11 +290,11 @@
                 </tr>
                 <tr>
                     <td class="label"><label for="Questions">Questions</label></td>
+                    <td><textarea  maxlength="300" id="questions" name="LEADCF10" class="nexersys"></textarea></td>
                     
                     
-                    
-                    <input class="hidden" type='text' maxlength='120' name='LEADCF92'>
-          <select class="hidden" name='LEADCF92hour'>
+                    <input class="datestr hidden" type='text' maxlength='120' name='LEADCF92'>
+          <select class="hours hidden" name='LEADCF92hour'>
             <option value='01'>
               01
             </option>
@@ -343,7 +343,7 @@
               12
             </option>
           </select>
-                    <select class="hidden" name='LEADCF92minute'>
+          <select class="minutes hidden" name='LEADCF92minute'>
             <option value='00'>
               00
             </option>
@@ -583,7 +583,8 @@
             <option value='59'>
               59
             </option>
-          </select><select class="hidden" "name='LEADCF92ampm'>
+          </select>
+                    <select class="ampm hidden" "name='LEADCF92ampm'>
             <option value='AM'>
               AM
             </option>
@@ -592,7 +593,7 @@
               PM
             </option>
           </select>
-                    <td><textarea  maxlength="300" id="Questions" name="LEADCF10" class="nexersys"></textarea></td>
+                    
                 </tr>
             </table>
             <input type="submit" class="submit" value="">
